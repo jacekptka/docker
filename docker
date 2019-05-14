@@ -1,1 +1,38 @@
-es-master.yml  config create es-master1
+AWS Host
+
+dockerd
+
+--default-limit memlock=-1
+vm.max_map_count=262144
+
+
+Notebook:
+export DOCKER_HOST="ssh://ubuntu@18.185.125.253"
+
+dokcer service create mojenginx --publish 8080:80 --replicas 2 nginx
+docker service ls
+
+docker service ps
+
+docker stack ls
+#docker system prune -f
+
+docker service scale mojenginx=10
+docker serivce logs
+
+
+COMPOSE:
+docker swarm init
+
+docker@es-master1:~$ sudo mkdir -p /usr/share/elasticsearch/config
+docker@es-master1:~$ sudo touch /usr/share/elasticsearch/config/elasticsearch.yml
+docker@es-master1:~$ sudo touch /usr/share/elasticsearch/config/jvm.options
+
+cat es-master1.yml | docker config create es-master1
+ech es-master1.yml > docker config create es-master1
+
+docker config ls
+docker config inspect qpwoefk39r320333...
+
+docker stack deploy -c docker-compose.yml
+
